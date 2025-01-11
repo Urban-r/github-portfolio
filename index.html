@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <section class="hero">
+        <canvas id="particlesCanvas"></canvas>
+        <div class="hero-content">
+            <h1>Hello, I'm <span>Riyaad Shahid</span></h1>
+            <p>I'm a full stack web developer.</p>
+            <a href="#about" class="btn btn-custom">View my work</a>
+            <div class="scroll-down" onclick="scrollToSection()">&#8595;</div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a passionate Computer Science student with experience in web development, machine learning, and building impactful projects. I'm a full stack developer with a passion for Java, react and solving complex algorithms. I believe that technology will go far with the introduction of artificial inteligence inspiring me to create more machinne learning projects that can change the future.</p>
+    </section>
+
+    <section class="skills-section">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <a href="https://reactjs.org" target="_blank"></a>
+                <div class="icon">⚛️</div>
+                <h3>React.js</h3>
+            </div>
+            <div class="skill-card">
+                <a href="https://expressjs.com/" target="_blank"></a>
+                <div class="icon">🛤️</div>
+                <h3>Express.js</h3>
+            </div>
+            <div class="skill-card">
+                <a href="https://www.mysql.com/" target="_blank"></a>
+                <div class="icon">🗄️</div>
+                <h3>SQL</h3>
+            </div>
+            <div class="skill-card">
+                <a href="https://www.oracle.com/java/" target="_blank"></a>
+                <div class="icon">☕</div>
+                <h3>Java</h3>
+            </div>
+            <div class="skill-card">
+                <a href="https://www.mongodb.com/resources/basics/databases/nosql-explained" target="_blank"></a>
+                <div class="icon">📂</div>
+                <h3>MongoDB</h3>
+            </div>
+            <div class="skill-card">
+                <a href="https://nodejs.org/en" target="_blank"></a>
+                <div class="icon">🟢</div>
+                <h3>Nodejs</h3>
+            </div>
+            <div class="skill-card">
+                <a href="https://www.javascript.com/" target="_blank"></a>
+                <div class="icon">💻</div>
+                <h3>JavaScript</h3>
+            </div>
+            <div class="skill-card">
+                <a href="https://www.python.org/" target="_blank"></a>
+                <div class="icon">🐍</div>
+                <h3>Python</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Carbon Footprint Tracker</h5>
+                        <p class="card-text">A web app to track and reduce carbon emissions. Built using ExpressJS and MongoDB.</p>
+                        <a href="https://github.com/Ctrl-Alt-Defeat-24/ECOLUTION" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">IRecipe</h5>
+                        <p class="card-text">A recipe book to search and save recipes using SpoonacularAPI using ReactJS.</p>
+                        <a href="https://github.com/Urban-r/IRecipe" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">TODO app</h5>
+                        <p class="card-text">A responsive checklist allowing addition and deletion of tasks using React + vite</p>
+                        <a href="https://github.com/Urban-r/TODOApp" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Riyaad Shahid. All rights reserved.</p>
+        <p><a href="https://github.com/Urban-r" target="_blank">GitHub</a> | <a href="https://www.linkedin.com/in/riyaad-shahid-835057296/" target="_blank">LinkedIn</a></p>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('particlesCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray = [];
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+            update() {
+                if (this.x + this.size > canvas.width || this.x - this.size < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y + this.size > canvas.height || this.y - this.size < 0) {
+                    this.directionY = -this.directionY;
+                }
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            const numberOfParticles = (canvas.width * canvas.height) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                const size = Math.random() * 2;
+                const x = Math.random() * (innerWidth - size * 2);
+                const y = Math.random() * (innerHeight - size * 2);
+                const directionX = (Math.random() * 0.4) - 0.2;
+                const directionY = (Math.random() * 0.4) - 0.2;
+                const color = '#fff';
+
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = innerWidth;
+            canvas.height = innerHeight;
+            init();
+        });
+
+        init();
+        animate();
+
+        function scrollToSection() {
+            document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
